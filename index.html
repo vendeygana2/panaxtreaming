@@ -34,10 +34,16 @@
             text-align: center;
             position: relative;
         }
-        .venta p, .header-title {
+        .venta p {
             margin: 15px 0;
             color: black; /* Texto en color negro */
             font-size: 16px;
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: black; /* Texto en color negro */
+            margin-bottom: 20px;
         }
         .botones {
             display: flex;
@@ -61,10 +67,6 @@
             width: 50%; /* Ajuste de tamaño de imagen */
             height: auto;
             margin: 20px auto;
-        }
-        .header-title {
-            font-size: 18px;
-            font-weight: bold;
         }
         .close-button {
             position: absolute;
@@ -97,13 +99,30 @@
             width: 100%;
             height: 100%;
         }
-        .highlight {
-            font-weight: bold;
-            color: black; /* Resaltado en color negro */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
         }
-        .emoji {
-            font-size: 22px;
-            vertical-align: middle;
+        .modal-content {
+            background-color: white;
+            border: 2px solid #ed7318;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 800px; /* Ajuste de tamaño de la ventana modal */
+            text-align: center;
+            position: relative;
+        }
+        .modal-content .video-container {
+            padding-bottom: 60%; /* Ajuste de tamaño del video */
         }
     </style>
 </head>
@@ -112,11 +131,26 @@
         <div class="venta">
             <button class="close-button" onclick="window.location.href='https://www.vendeygana.net/user/'">X</button>
             <div class="header-title">🎥 PANAXTREAMING</div>
-            <p>❓ <span class="highlight">¿POR QUÉ PAGAR CABLE O CUENTAS STREAMING QUE TE GENERAN TANTOS PROBLEMAS?</span> ESTÁ A UN PASO DE TENERLO TODO</p>
+            <p>❓ <span class="highlight">POR QUÉ PAGAR CABLE O CUENTAS STREAMING QUE TE GENERAN TANTOS PROBLEMAS</span> ESTÁ A UN PASO DE TENERLO TODO</p>
             <p>📺 <span class="highlight">+ 800 CANALES EN VIVO, DEPORTES, NOTICIAS, INFANTILES</span></p>
             <p>🎬 <span class="highlight">+ 8.000 Películas y Series ESTRENOS Y CLÁSICAS de plataformas como NETFLIX, AMAZON PRIME, DISNEY, MAX sin las restricciones de estas.</span></p>
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/eoUNddQf8OU" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="botones">
+                <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/otras-cuentas'">🛒 Comprar</button>
+                <button class="boton" onclick="window.location.href='https://www.vendeygana.net/user/'">🔙 Regresar a Vende y Gana</button>
+                <button class="boton" onclick="openModal2()">📱 Equipos Compatibles e Instalación</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal2()">X</button>
+            <div class="header-title">📱 Equipos Compatibles e Instalación</div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/mpdY5xEeWUU" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="botones">
                 <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/otras-cuentas'">🛒 Comprar</button>
@@ -128,6 +162,14 @@
     <script>
         function openModal() {
             document.getElementById('overlay').style.display = 'flex';
+        }
+
+        function openModal2() {
+            document.getElementById('modal2').style.display = 'flex';
+        }
+
+        function closeModal2() {
+            document.getElementById('modal2').style.display = 'none';
         }
     </script>
 </body>
