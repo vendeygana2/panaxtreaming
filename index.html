@@ -52,8 +52,9 @@
             margin-top: 20px;
         }
         .boton {
-            background-color: #ed7318;
-            color: white;
+            background-color: #a9ff00; /* Color del botón de comprar */
+            color: black; /* Color de las letras del botón de comprar */
+            font-weight: bold; /* Letras en negrita */
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -61,7 +62,19 @@
             text-transform: uppercase;
         }
         .boton:hover {
-            background-color: #d66616;
+            background-color: #8fd600; /* Color del botón de comprar al pasar el ratón */
+        }
+        .boton-negro {
+            background-color: black; /* Color del botón de equipos compatibles */
+            color: white; /* Color de las letras del botón de equipos compatibles */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .boton-negro:hover {
+            background-color: #333; /* Color del botón de equipos compatibles al pasar el ratón */
         }
         .imagen {
             width: 50%; /* Ajuste de tamaño de imagen */
@@ -117,16 +130,33 @@
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 800px; /* Ajuste de tamaño de la ventana modal */
+            max-width: 300px; /* Ajuste de tamaño de la ventana modal */
             text-align: center;
             position: relative;
         }
         .modal-content .video-container {
             padding-bottom: 60%; /* Ajuste de tamaño del video */
         }
+        .like-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .like-button {
+            background-color: #ed7318;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .like-button:hover {
+            background-color: #d66616;
+        }
     </style>
 </head>
-<body onload="openModal()">
+<body onload="initializeLikes()">
     <div class="overlay" id="overlay">
         <div class="venta">
             <button class="close-button" onclick="window.location.href='https://www.vendeygana.net/user/'">X</button>
@@ -139,8 +169,11 @@
             </div>
             <div class="botones">
                 <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/otras-cuentas'">🛒 Comprar</button>
-                <button class="boton" onclick="window.location.href='https://www.vendeygana.net/user/'">🔙 Regresar a Vende y Gana</button>
-                <button class="boton" onclick="openModal2()">📱 Equipos Compatibles e Instalación</button>
+                <button class="boton-negro" onclick="openModal2()">📱 Equipos Compatibles e Instalación</button>
+            </div>
+            <div class="like-section">
+                <span id="like-count">Likes: 407</span>
+                <button class="like-button" onclick="handleLike()">👍 Dale Like</button>
             </div>
         </div>
     </div>
@@ -154,14 +187,70 @@
             </div>
             <div class="botones">
                 <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/otras-cuentas'">🛒 Comprar</button>
-                <button class="boton" onclick="window.location.href='https://www.vendeygana.net/user/'">🔙 Regresar a Vende y Gana</button>
+                <button class="boton-negro" onclick="window.location.href='https://www.vendeygana.net/user/'">🔙 Regresar a Vende y Gana</button>
             </div>
         </div>
     </div>
 
+    <div class="modal" id="likeModal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeLikeModal()">X</button>
+            <div class="header-title" id="likeModalMessage">Gracias por tu like!</div>
+            <img src="https://i.pinimg.com/originals/6d/04/85/6d0485006e455ef83290b2a5bcf27c56.gif" alt="Gracias por tu like" style="width: 100%; height: auto; margin-top: 20px;">
+        </div>
+    </div>
+
     <script>
-        function openModal() {
-            document.getElementById('overlay').style.display = 'flex';
+        let likes = parseInt(localStorage.getItem('likes')) || 407;
+        let lastLiked = localStorage.getItem('lastLiked') ? new Date(localStorage.getItem('lastLiked')) : null;
+
+        function initializeLikes() {
+            document.getElementById('like-count').innerText = 'Likes: ' + likes;
+            incrementLikesPeriodically();
+            addLike();
+        }
+
+        function addLike() {
+            likes++;
+            document.getElementById('like-count').innerText = 'Likes: ' + likes;
+            localStorage.setItem('likes', likes);
+        }
+
+        function handleLike() {
+            const now = new Date();
+            if (lastLiked && isSameDay(now, lastLiked)) {
+                showLikeModal("Gracias pero solo puedes darle like una vez al día");
+            } else {
+                likes++;
+                lastLiked = now;
+                localStorage.setItem('likes', likes);
+                localStorage.setItem('lastLiked', lastLiked);
+                document.getElementById('like-count').innerText = 'Likes: ' + likes;
+                showLikeModal("Gracias por tu like! Es muy importante para nosotros, pues tú eres nuestra razón de mejorar cada día.");
+            }
+        }
+
+        function showLikeModal(message) {
+            document.getElementById('likeModalMessage').innerText = message;
+            document.getElementById('likeModal').style.display = 'flex';
+        }
+
+        function closeLikeModal() {
+            document.getElementById('likeModal').style.display = 'none';
+        }
+
+        function isSameDay(date1, date2) {
+            return date1.getFullYear() === date2.getFullYear() &&
+                   date1.getMonth() === date2.getMonth() &&
+                   date1.getDate() === date2.getDate();
+        }
+
+        function incrementLikesPeriodically() {
+            setInterval(() => {
+                likes += 15;
+                localStorage.setItem('likes', likes);
+                document.getElementById('like-count').innerText = 'Likes: ' + likes;
+            }, 4 * 60 * 60 * 1000); // Cada 4 horas
         }
 
         function openModal2() {
