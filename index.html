@@ -36,13 +36,13 @@
         }
         .venta p {
             margin: 15px 0;
-            color: black; /* Texto en color negro */
+            color: black;
             font-size: 16px;
         }
         .header-title {
             font-size: 18px;
             font-weight: bold;
-            color: black; /* Texto en color negro */
+            color: black;
             margin-bottom: 20px;
         }
         .botones {
@@ -52,9 +52,9 @@
             margin-top: 20px;
         }
         .boton {
-            background-color: #a9ff00; /* Color del botón de comprar */
-            color: black; /* Color de las letras del botón de comprar */
-            font-weight: bold; /* Letras en negrita */
+            background-color: #a9ff00;
+            color: black;
+            font-weight: bold;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -62,11 +62,11 @@
             text-transform: uppercase;
         }
         .boton:hover {
-            background-color: #8fd600; /* Color del botón de comprar al pasar el ratón */
+            background-color: #8fd600;
         }
         .boton-negro {
-            background-color: black; /* Color del botón de equipos compatibles */
-            color: white; /* Color de las letras del botón de equipos compatibles */
+            background-color: black;
+            color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
@@ -74,10 +74,10 @@
             text-transform: uppercase;
         }
         .boton-negro:hover {
-            background-color: #333; /* Color del botón de equipos compatibles al pasar el ratón */
+            background-color: #333;
         }
         .imagen {
-            width: 50%; /* Ajuste de tamaño de imagen */
+            width: 50%;
             height: auto;
             margin: 20px auto;
         }
@@ -98,7 +98,7 @@
         }
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             max-width: 100%;
@@ -142,12 +142,12 @@
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 300px; /* Ajuste de tamaño de la ventana modal */
+            max-width: 300px;
             text-align: center;
             position: relative;
         }
         .modal-content .video-container {
-            padding-bottom: 60%; /* Ajuste de tamaño del video */
+            padding-bottom: 60%;
         }
         .like-section {
             margin-top: 20px;
@@ -184,7 +184,7 @@
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 1080px; /* Aumento del tamaño de la ventana en un 35% */
+            max-width: 1080px;
             text-align: center;
             position: relative;
         }
@@ -192,7 +192,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 75.9375%; /* Ajuste del tamaño del carrusel en un 35% (16:9 ratio * 1.35) */
+            padding-bottom: 75.9375%;
             overflow: hidden;
         }
         .carousel img {
@@ -220,7 +220,7 @@
                 <iframe src="https://www.youtube.com/embed/eoUNddQf8OU" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="botones">
-                <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/otras-cuentas'">🛒 Comprar</button>
+                <button class="boton" onclick="window.location.href='https://vendeygana2.github.io/comprapanaxtreaming/'">🛒 Comprar</button>
                 <button class="boton-negro" onclick="openModal2()">📱 Equipos Compatibles e Instalación</button>
             </div>
             <div class="like-section">
@@ -252,7 +252,7 @@
                 <iframe src="https://www.youtube.com/embed/mpdY5xEeWUU" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="botones">
-                <button class="boton" onclick="window.location.href='https://departamentodecuentas.company.site/products/otras-cuentas'">🛒 Comprar</button>
+                <button class="boton" onclick="window.location.href='https://vendeygana2.github.io/comprapanaxtreaming/'">🛒 Comprar</button>
                 <button class="boton-negro" onclick="window.location.href='https://www.vendeygana.net/user/'">🔙 Regresar a Vende y Gana</button>
             </div>
         </div>
@@ -274,8 +274,8 @@
             document.getElementById('like-count').innerText = 'Likes: ' + likes;
             incrementLikesPeriodically();
             addLike();
-            setTimeout(showNewOverlay, 1000); // Mostrar la nueva venta emergente después de 1 segundo
-            startCarousel(); // Iniciar el carrusel de imágenes
+            setTimeout(showNewOverlay, 1000);
+            startCarousel();
         }
 
         function addLike() {
@@ -318,7 +318,7 @@
                 likes += 15;
                 localStorage.setItem('likes', likes);
                 document.getElementById('like-count').innerText = 'Likes: ' + likes;
-            }, 4 * 60 * 60 * 1000); // Cada 4 horas
+            }, 4 * 60 * 60 * 1000);
         }
 
         function openModal2() {
@@ -345,7 +345,7 @@
                 images[currentIndex].classList.remove('active');
                 currentIndex = (currentIndex + 1) % images.length;
                 images[currentIndex].classList.add('active');
-            }, 3000); // Cambiar imagen cada 3 segundos
+            }, 3000);
         }
     </script>
 </body>
